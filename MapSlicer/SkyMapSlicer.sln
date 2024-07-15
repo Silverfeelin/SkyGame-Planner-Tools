@@ -5,6 +5,8 @@ VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SkyMapSlicer", "SkyMapSlicer\SkyMapSlicer.csproj", "{FD616C49-B2B4-47D0-9E5B-F50A6CCB0F5B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageSlicer", "ImageSlicer\ImageSlicer.csproj", "{D9CB4E04-F2A7-4196-8358-49C9A2AEC34D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{FD616C49-B2B4-47D0-9E5B-F50A6CCB0F5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD616C49-B2B4-47D0-9E5B-F50A6CCB0F5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD616C49-B2B4-47D0-9E5B-F50A6CCB0F5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9CB4E04-F2A7-4196-8358-49C9A2AEC34D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9CB4E04-F2A7-4196-8358-49C9A2AEC34D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9CB4E04-F2A7-4196-8358-49C9A2AEC34D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9CB4E04-F2A7-4196-8358-49C9A2AEC34D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -75,5 +75,5 @@ void Scale(int zoomLevel)
     }
 }
 
-for (var z = 0; z <= 3; z++)
+for (var z = 0; z <= 4; z++)
     Scale(z);
