@@ -1,0 +1,44 @@
+.wikitools-root {
+  --padding: 10px;
+  --anchor-offset: 30px;
+}
+
+.wikitools-root {
+  font-family: monospace;
+
+  .p-fixed { position: fixed !important; }
+  .p-absolute { position: absolute !important; }
+  .z-top { z-index: 9999 !important; }
+
+  .br {    
+    bottom: var(--padding);
+    right: var(--padding);
+  }
+
+  .tr {
+    top: var(--padding);
+    right: var(--padding);
+  }
+
+  .container {
+    background: #111116;
+    border: 1px solid #888;
+    border-radius: 10px;
+    color: #fff;
+    padding: var(--padding);
+  }
+
+  .fold {
+    width: 18px;
+    box-sizing: content-box;
+    cursor: pointer;
+    text-align: center;
+    border: 1px solid #fff;
+    padding: 4px;
+    border-radius: 10px;
+  }
+
+  .pointer {
+    cursor: pointer;
+  }
+}
