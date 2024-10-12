@@ -28,8 +28,9 @@ export class HtmlHelper {
   static getType(el: HTMLElement): ItemType | undefined {
     while (el) {
       const text = el.innerText.toLowerCase();
-      if (text.includes('hair accessory')) { return 'Hat' }
-      if (text.includes('hat')) { return 'Hat' }
+      if (text.includes('hair accessory')) { return 'HairAccessory' }
+      if (text.includes('hat')) { return 'HairAccessory' }
+      if (text.includes('head accessory')) { return 'HeadAccessory' }
       if (text.includes('hair')) { return 'Hair'; }
       if (text.includes('cape')) { return 'Cape'; }
       if (text.includes('mask')) { return 'Mask'; }

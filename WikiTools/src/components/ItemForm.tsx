@@ -27,7 +27,7 @@ const hotkeyActions = [
 class ItemForm extends Component {
   props: { disabled: boolean };
   state: State = {
-    action: '', type: 'Hat', subtype: '',
+    action: '', type: 'HairAccessory', subtype: '',
     name: '', icon: '', preview: '',
     level: '', group: ''
   };
@@ -111,7 +111,7 @@ class ItemForm extends Component {
   actions: {[key: string]: () => void } = {
     type: () => {      
       const el = this.getEl();
-      const type = HtmlHelper.getType(el) || 'Hat';
+      const type = HtmlHelper.getType(el) || 'HairAccessory';
       this.setState({type}, () => { this.scrollToEnds(); });
     },
     name: () => {
@@ -135,7 +135,8 @@ class ItemForm extends Component {
 
   getNameType(type: string): string { 
     switch (type) {
-      case 'Hat':
+      case 'Hair Accessory':
+      case 'Head Accessory':
       case 'Hair':
       case 'Mask':
       case 'Face Accessory':
@@ -175,7 +176,7 @@ class ItemForm extends Component {
     item.icon = this.state.icon;
     if (this.state.preview) { item.previewUrl = this.state.preview; }
 
-    const orderedTypes = new Set(['Hat', 'Hair', 'Mask', 'FaceAccessory', 'Necklace', 'Outfit', 'Shoes', 'Cape', 'Held', 'Furniture', 'Prop', 'Emote', 'Stance', 'Call', 'Spell', 'Music']);
+    const orderedTypes = new Set(['HairAccessory', 'HeadAccessory', 'Hair', 'Mask', 'FaceAccessory', 'Necklace', 'Outfit', 'Shoes', 'Cape', 'Held', 'Furniture', 'Prop', 'Emote', 'Stance', 'Call', 'Spell', 'Music']);
     if (orderedTypes.has(item.type) && !this.state.level) { item.order = 10000; }
     if (this.state.level) { item.level = this.state.level; }
     return item;
@@ -207,7 +208,8 @@ class ItemForm extends Component {
             </td>
             <td>
               <select id='type' name='type' value={this.state.type} onChange={(e) => this.setState({type: e.target.value})}>
-                <option value='Hat'>Hat</option>
+                <option value='HairAccessory'>Hair Accessory</option>
+                <option value='HeadAccessory'>Head Accessory</option>
                 <option value='Hair'>Hair</option>
                 <option value='Mask'>Mask</option>
                 <option value='FaceAccessory'>Face Accessory</option>
