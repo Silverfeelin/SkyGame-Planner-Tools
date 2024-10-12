@@ -7,6 +7,7 @@ export type Item = {
   type: string;
   name: string;
   icon: string;
+  group?: ItemGroup;
 };
 
 export type Tree = {

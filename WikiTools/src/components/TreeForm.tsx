@@ -59,7 +59,7 @@ class TreeForm extends Component {
       guid: this.state.tree.guid,
       node: this.state.tree.node.guid
     };
-    navigator.clipboard.writeText(JSON.stringify(tree, undefined, 2));
+    navigator.clipboard.writeText(JSON.stringify(tree, undefined, 2) + ',');
   }
 
   copyNodes(): void {
@@ -97,7 +97,7 @@ class TreeForm extends Component {
     };
     addNode(this.state.tree.node);
 
-    let json = JSON.stringify(nodes, undefined, 2).replace(/([^,}],?)\n\s*/g, '$1 ').replace('[', '').replace(']', '');
+    let json = JSON.stringify(nodes, undefined, 2).replace(/([^,}],?)\n\s*/g, '$1 ').replace('[', '').replace(']', '').replace(/\s+$/g, ',');
     navigator.clipboard.writeText(json);
   }
 
@@ -124,6 +124,7 @@ class TreeForm extends Component {
     }, {} as { [key: string]: Item });
     
     const newItems: Array<Item> = [];    
+    let hasSeasonCost = false;
     const parseNode = (divNode: HTMLElement, node: Node, x: number, y: number): Node | undefined => {
       if (!divNode || !divNode.children.length) { return undefined; }
 
@@ -134,15 +135,19 @@ class TreeForm extends Component {
 
       // Create new item or look up existing item.
       const itemTemplate = this.itemIconUrlMap[itemIcon];
+      let createdItem: Item | undefined = undefined;
       let itemGuid: string;
       if (itemTemplate) {
         const item = { guid: nanoid(10), type: itemTemplate.type, name: itemTemplate.name, icon: itemIcon };
         newItems.push(item);
+        createdItem = item;
         itemGuid = item.guid;
       } else {
-        let item = itemByIconMap[itemIcon];
+        const name = itemIcon.includes('Seasonal-Heart') ? 'Season Heart' : 'PLACEHOLDER';
+        let item = name === 'PLACEHOLDER' ? itemByIconMap[itemIcon] : undefined;
         if (!item) { 
-          item = { guid: nanoid(10), type: 'Special', name: 'PLACEHOLDER', icon: itemIcon };
+          item = { guid: nanoid(10), type: 'Special', name, icon: itemIcon };
+          createdItem = item;
           newItems.push(item);
         }
         itemGuid = item.guid;
@@ -175,9 +180,13 @@ class TreeForm extends Component {
         if (title === 'Candle') { node.c = cost; }
         if (title === 'Heart') { node.h = cost; }
         if (title === 'Ascended Candle') { node.ac = cost; }
-        if (title === 'Season Candle') { node.sc = cost; }
-        if (title === 'Season Heart') { node.sh = cost; }
+        if (title === 'Season Candle') { node.sc = cost; hasSeasonCost = true; }
+        if (title === 'Season Heart') { node.sh = cost; hasSeasonCost = true; }
         if (title === 'Ticket') { node.ec = cost; }
+      }
+
+      if (!cost && hasSeasonCost && createdItem) {
+        createdItem.group = 'SeasonPass';
       }
 
       return node;
