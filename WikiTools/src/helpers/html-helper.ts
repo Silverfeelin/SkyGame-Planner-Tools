@@ -37,7 +37,7 @@ export class HtmlHelper {
       if (text.includes('face accessory')) { return 'FaceAccessory'; }
       if (text.includes('outfit')) { return 'Outfit'; }
       if (text.includes('shoes')) { return 'Shoes'; }
-      if (text.includes('necklace') || text.includes('pendant')) { return 'Necklace'; }
+      if (text.includes('neck') || text.includes('pendant')) { return 'Necklace'; }
       if (text.includes('prop')) { return 'Prop'; }
       if (text.includes('instrument')) { return 'Held'; }
       el = el.parentElement;
